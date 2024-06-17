@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jomai1/toWantList#readme",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "mongodb": "^6.7.0"
   }
 }
