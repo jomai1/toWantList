@@ -1,0 +1,19 @@
+{
+  "name": "towantlist",
+  "version": "1.0.0",
+  "description": "This is a prototype for my task and todo list.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jomai1/toWantList.git"
+  },
+  "author": "Joost Mainz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jomai1/toWantList/issues"
+  },
+  "homepage": "https://github.com/jomai1/toWantList#readme"
+}
