@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jomai1/toWantList/issues"
   },
-  "homepage": "https://github.com/jomai1/toWantList#readme"
+  "homepage": "https://github.com/jomai1/toWantList#readme",
+  "dependencies": {
+    "mongodb": "^6.7.0"
+  }
 }
