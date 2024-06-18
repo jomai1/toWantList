@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This is a prototype for my task and todo list.",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +18,9 @@
   },
   "homepage": "https://github.com/jomai1/toWantList#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "express": "^4.19.2",
     "mongodb": "^6.7.0"
   }
 }

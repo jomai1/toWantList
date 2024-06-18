@@ -1,26 +1,51 @@
-require('dotenv').config();
+import app from './server.js' 
+import mongodb from "mongodb" 
+import dotenv from "dotenv"
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.MONGODB_URI;
+dotenv.config()
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
+const uri = process.env.MONGODB_URI
+const db = process.env.TASKS
+const port = process.env.PORT || 8000
+let databasesList
+let error = []
+
+async function listDatabases(client){
+    let databasesList = await client.db().admin().listDatabases();
+    console.log("Databases:");
+    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+    console.log("\n")
+
+    return databasesList.databases? true: false
+};
+
+
+
+async function main(){ 
+  const client = new mongodb.MongoClient(
+    uri
+  )
+
+try {
+  console.log('Connect to MongoDB cluster')
+  await client.connect()
+  
+  if(!await listDatabases(client)){
+    error.push('no_db')
   }
-});
-async function run() {
-  try {
-    // Connect the client to the server (optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
+
+
+  if(!error.length){
+    app.listen(port, () => {
+      console.log(`server is running on port: ${port}`);
+    })  
+  }
+  
+  } catch (e) { 
+      console.error(e); 
+      error.push(e)
+      process.exit(1)
+
   }
 }
-run().catch(console.dir);
+main().catch(console.error);
