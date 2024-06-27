@@ -5,8 +5,9 @@ const router = express.Router()
 
 
 router.route('/').get(TasksController.apiGetTasks)
+
 router
-  .route("/review") 
+  .route("/task") 
   .post(TasksController.apiPostTasks) 
   .put(TasksController.apiUpdateTasks) 
   .delete(TasksController.apiDeleteTasks)

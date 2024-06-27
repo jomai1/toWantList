@@ -19,8 +19,6 @@ async function listDatabases(client){
     return databasesList.databases? true: false
 };
 
-
-
 async function main(){ 
   const client = new mongodb.MongoClient(
     uri
